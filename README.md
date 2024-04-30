@@ -1,3 +1,10 @@
+## Compstead
+An application for comparing rehab value for housing within a specified radius.
+
+## Long-term Goals
+- [ ] Grab MLS data or Zillow data. Scraped data should be shown in a map of choice (mapbox, google maps, etc.)
+- [ ] Get formula and logic for comparing
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
