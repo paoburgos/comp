@@ -20,31 +20,41 @@ const DynamicBreadcrumb = () => {
     setSegments(paths);
   };
 
+  const capitalize = (word: string) =>
+    word.charAt(0).toUpperCase() + word.slice(1);
+
   useEffect(() => {
     pathNameArray(pathname);
   }, [pathname]);
 
+  const multiplePaths = segments.map((link, i) => {
+    const href = `/${segments.slice(0, i + 1).join("/")}`;
+    return (
+      <>
+        <BreadcrumbItem key={`${link}-${i}`}>
+          <BreadcrumbLink asChild>
+            <Link href={href}>{capitalize(link)}</Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        {segments.length !== i + 1 && <BreadcrumbSeparator key={link} />}
+      </>
+    );
+  });
+
   return (
     <Breadcrumb className="hidden md:flex">
       <BreadcrumbList>
-        {segments.map((segment) => (
-          <BreadcrumbItem key={segment}>
+        {segments.length == 1 ? (
+          <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href={pathname}>{segment}</Link>
+              <Link href={`/${segments[0]}`}>
+                {capitalize(segments[0] ?? "")}
+              </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          // <BreadcrumbSeparator />
-        ))}
-
-        {/* <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="#">Products</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>Edit Product</BreadcrumbPage>
-        </BreadcrumbItem> */}
+        ) : (
+          multiplePaths
+        )}
       </BreadcrumbList>
     </Breadcrumb>
   );
