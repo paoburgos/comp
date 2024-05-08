@@ -9,26 +9,34 @@ import {
   BreadcrumbSeparator,
 } from "../../components/ui/breadcrumb";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const DynamicBreadcrumb = () => {
+  const [segments, setSegments] = useState<string[]>([]);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+
+  const pathNameArray = (path: string): void => {
+    const paths = path.split("/").filter((path) => path !== "");
+    setSegments(paths);
+  };
+
   useEffect(() => {
-    // Do something here...
-    console.log("pathname::::", pathname);
-  }, [pathname, searchParams]);
+    pathNameArray(pathname);
+  }, [pathname]);
 
   return (
     <Breadcrumb className="hidden md:flex">
       <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="#">Dashboard</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
+        {segments.map((segment) => (
+          <BreadcrumbItem key={segment}>
+            <BreadcrumbLink asChild>
+              <Link href={pathname}>{segment}</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          // <BreadcrumbSeparator />
+        ))}
+
+        {/* <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link href="#">Products</Link>
           </BreadcrumbLink>
@@ -36,7 +44,7 @@ const DynamicBreadcrumb = () => {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbPage>Edit Product</BreadcrumbPage>
-        </BreadcrumbItem>
+        </BreadcrumbItem> */}
       </BreadcrumbList>
     </Breadcrumb>
   );
