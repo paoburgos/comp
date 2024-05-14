@@ -67,6 +67,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 
 import { usePathname } from "next/navigation";
 import DynamicBreadcrumb from "./_components/dynamic-breadcrumb";
+import { useEffect } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -87,6 +88,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <div className="flex min-h-screen w-full flex-col bg-muted/40">
+          {/* SECTION: Sidebar */}
           <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
             <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
               <Link
@@ -184,7 +186,10 @@ export default function RootLayout({
               </TooltipProvider>
             </nav>
           </aside>
+
+          {/* SECTION: Content */}
           <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+            {/* SECTION: Navbar */}
             <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
               <Sheet>
                 <SheetTrigger asChild>
@@ -277,6 +282,8 @@ export default function RootLayout({
                 </DropdownMenuContent>
               </DropdownMenu>
             </header>
+
+            {/* SECTION: Main Content */}
             <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
               <div className="mx-auto grid w-full max-w-[87.5rem] flex-1 auto-rows-max gap-4">
                 {/* SECTION: Title */}
