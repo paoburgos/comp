@@ -14,17 +14,8 @@ import {
   Upload,
   Users2,
 } from "lucide-react";
-
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,25 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
 import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/select";
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../components/ui/table";
-import { Textarea } from "../components/ui/textarea";
-import { ToggleGroup, ToggleGroupItem } from "../components/ui/toggle-group";
 import {
   Tooltip,
   TooltipContent,
@@ -60,14 +33,9 @@ import {
   TooltipTrigger,
 } from "../components/ui/tooltip";
 import "~/styles/globals.css";
-
 import { Inter } from "next/font/google";
-
 import { TRPCReactProvider } from "~/trpc/react";
-
-import { usePathname } from "next/navigation";
 import DynamicBreadcrumb from "./_components/dynamic-breadcrumb";
-import { useEffect } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -256,6 +224,8 @@ export default function RootLayout({
                   className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
                 />
               </div>
+              {}
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
