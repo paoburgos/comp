@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "../../components/ui/breadcrumb";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const DynamicBreadcrumb = () => {
   const [segments, setSegments] = useState<string[]>([]);
@@ -30,14 +30,14 @@ const DynamicBreadcrumb = () => {
   const multiplePaths = segments.map((link, i) => {
     const href = `/${segments.slice(0, i + 1).join("/")}`;
     return (
-      <>
-        <BreadcrumbItem key={`${link}-${i}`}>
+      <React.Fragment key={`${link}-${i}`}>
+        <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link href={href}>{capitalize(link)}</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         {segments.length !== i + 1 && <BreadcrumbSeparator key={link} />}
-      </>
+      </React.Fragment>
     );
   });
 
