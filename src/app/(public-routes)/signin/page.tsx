@@ -7,9 +7,9 @@ export default function Page() {
   return (
     <>
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold">Login</h1>
+        <h1 className="text-3xl font-bold">Sign In</h1>
         <p className="text-balance text-muted-foreground">
-          Enter your email below to login to your account
+          Enter your email below to sign in to your account
         </p>
       </div>
       <div className="grid gap-4">
@@ -30,13 +30,13 @@ export default function Page() {
           <Input id="password" type="password" required />
         </div>
         {/* <Button type="submit" className="w-full">
-                  Login
+                  Sign In
                 </Button> */}
         <Button asChild>
-          <Link href="/dashboard">Login</Link>
+          <Link href="/dashboard">Sign In</Link>
         </Button>
         <Button variant="outline" className="w-full">
-          Login with Google
+          Sign In with Google
         </Button>
       </div>
       <div className="mt-4 text-center text-sm">
