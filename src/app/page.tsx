@@ -47,7 +47,7 @@ export default async function Home() {
 
 async function CrudShowcase() {
   const session = await getServerAuthSession();
-  if (!session?.user) return null;
+  if (!session?.user) return <>Not Authenticated</>;
 
   const latestPost = await api.post.getLatest();
 
