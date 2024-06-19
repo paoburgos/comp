@@ -5,6 +5,9 @@ An application for comparing rehab value for housing within a specified radius.
 - [ ] Grab MLS data or Zillow data. Scraped data should be shown in a map of choice (mapbox, google maps, etc.)
 - [ ] Get formula and logic for comparing
 - [ ] Integrate Mapbox or Google Maps for map viewing. House radius will be a feature needed.
+- [ ] Use shadcn to create custom components
+- [ ] Setup prisma config
+- [ ] Setup database
 
 # Create T3 App
 
